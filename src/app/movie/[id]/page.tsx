@@ -1,12 +1,14 @@
-import { API_KEY, LANG, MOVIE_BASE_URL } from '@/app/constants';
+import { API_KEY, LANG, MOVIE_BASE_URL } from "@/app/constants";
 import Image from "next/image";
 
 interface MoviePageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function MoviePage({ params }: MoviePageProps) {
-  const movieUrl = `${MOVIE_BASE_URL}/${params.id}?api_key=${API_KEY}&language=${LANG}`;
+
+  const { id } = await params;
+  const movieUrl = `${MOVIE_BASE_URL}/${id}?api_key=${API_KEY}&language=${LANG}`;
 
   const fetchMovie = await fetch(movieUrl);
   const data = await fetchMovie.json();
