@@ -1,5 +1,7 @@
 ## This is a Next.js movie application
 
+Deploy on Vercell - https://movie-a67t1ycmc-elinarazinas-projects-45d70438.vercel.app/
+
 Features:
 Main page provides popular movies with name, rating and image.
 If you click on the movie card - you will open movie details.
