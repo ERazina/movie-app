@@ -4,23 +4,21 @@ import { API_KEY, MOVIE_BASE_URL, LANG } from "@/app/constants";
 import ClientPagination from "@/components/Pagination/Pagination";
 import Search from "@/components/Search/Search";
 
-type Props = {
-  searchParams: { page?: string; query?: string };
-};
-
-export default async function Home({ searchParams }: Props) {
-  const { query } = searchParams;
-  const page = Number(searchParams.page || "1");
+export default async function Home(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const page = Number(searchParams?.page) || 1;
 
   const url = query
     ? `${MOVIE_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}&language=${LANG}&page=${page}`
     : `${MOVIE_BASE_URL}/movie/popular?api_key=${API_KEY}&language=${LANG}&page=${page}`;
   const request = await fetch(url);
   const data = await request.json();
-
-  if (data.results.length > 0) {
-    console.log(data.results);
-  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
