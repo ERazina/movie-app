@@ -31,7 +31,6 @@ export default function Search() {
         allowClear
         onSearch={handleSearch}
       />
-      {<>{}</>}
     </div>
   );
 }
