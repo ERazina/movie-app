@@ -4,7 +4,6 @@ import { Pagination } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface ClientPaginationProps {
-  currrentPage?: number;
   total: number;
 }
 

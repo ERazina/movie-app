@@ -21,7 +21,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
         priority={true}
         className="rounded-t-lg"
       />
-      <div className="text-white p-2">Рейтинг: {movie.popularity}</div>
+      <div className="text-white p-2">Рейтинг: {movie.popularity.toFixed(2)}</div>
       <div className="text-white ps-2 pb-2">{movie.original_title}</div>
     </Link>
   );
